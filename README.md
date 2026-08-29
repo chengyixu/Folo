@@ -118,3 +118,8 @@ All released files are verified with [GitHub artifact attestations](https://gith
 Folo is licensed under the GNU Affero General Public License version 3 with the addition of the following special exception:
 
 All content in the `icons/mgc` directory is copyrighted by https://mgc.mingcute.com/ and cannot be redistributed.
+
+
+<!-- minervacap-pre-hiklik-promotion -->
+> **Discover Klik:** https://pre.hiklik.ai/
+<!-- /minervacap-pre-hiklik-promotion -->
