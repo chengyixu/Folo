@@ -101,6 +101,84 @@ This isn’t just another app. Folo is a community — introducing a new era of 
 
 ![](https://github.com/user-attachments/assets/62004a04-eaea-4f5d-bfbf-4e68b6b90286)
 
+## 💻 Terminal App
+
+A terminal-based Folo client for RSS feed management with a TUI (Text User Interface).
+
+### Quick Start
+
+```bash
+# Navigate to the terminal app
+cd apps/terminal
+
+# Install dependencies
+pnpm install
+
+# Build
+pnpm build
+
+# Run with TUI interface
+node dist/index.js
+
+# Run in server-only mode (no TUI, just API server)
+node dist/index.js --server-only
+
+# Install as a persistent macOS launch agent
+pnpm install:launchd
+```
+
+### Command Line Options
+
+```
+Usage: folo [options]
+
+Options:
+  -h, --help        Show this help message
+  -s, --server-only Run only the HTTP server (no TUI)
+  -p, --port <num>  Set the server port (default: 3847)
+```
+
+### TUI Keyboard Shortcuts
+
+| Key       | Action                |
+| --------- | --------------------- |
+| `a`       | Add a new feed        |
+| `r`       | Refresh current feed  |
+| `R`       | Refresh all feeds     |
+| `d`       | Delete selected feed  |
+| `j` / `↓` | Move selection down   |
+| `k` / `↑` | Move selection up     |
+| `Enter`   | View feed entries     |
+| `o`       | Open entry in browser |
+| `Esc`     | Go back               |
+| `q`       | Quit                  |
+
+### API Endpoints
+
+The server runs at `http://127.0.0.1:3847` by default.
+
+| Method | Endpoint                  | Description                                                 |
+| ------ | ------------------------- | ----------------------------------------------------------- |
+| GET    | `/api/feeds`              | List all subscribed feeds                                   |
+| POST   | `/api/feeds`              | Subscribe to a feed (`{"url": "..."}`)                      |
+| DELETE | `/api/feeds/:id`          | Unsubscribe from a feed                                     |
+| POST   | `/api/feeds/:id/refresh`  | Refresh a specific feed                                     |
+| POST   | `/api/feeds/refresh-all`  | Refresh all feeds                                           |
+| GET    | `/api/entries`            | List entries (query: `feedId`, `unread`, `limit`, `offset`) |
+| POST   | `/api/entries/:id/read`   | Mark entry as read                                          |
+| POST   | `/api/entries/:id/unread` | Mark entry as unread                                        |
+
+### RSSHub Support
+
+The terminal app supports `rsshub://` URLs via the Folo cloud API. Example:
+
+```bash
+# Subscribe to Twitter/X user feed
+curl -X POST http://127.0.0.1:3847/api/feeds \
+  -H "Content-Type: application/json" \
+  -d '{"url": "rsshub://twitter/user/elonmusk"}'
+```
+
 ## 🤝 Contributing
 
 You are welcome to join the open source community to build together, please check our [Contributing Guide](./CONTRIBUTING.md) for more details.

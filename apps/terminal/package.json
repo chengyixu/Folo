@@ -1,0 +1,39 @@
+{
+  "name": "@follow/terminal",
+  "version": "0.1.0",
+  "description": "Terminal version of Folo RSS reader",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "folo": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.tsx",
+    "build": "tsup",
+    "install:launchd": "bash scripts/install-launch-agent.sh",
+    "start": "node dist/index.js",
+    "server": "node dist/index.js --server-only",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "better-sqlite3": "^12.6.2",
+    "drizzle-orm": "0.44.7",
+    "fastify": "^5.3.3",
+    "ink": "^6.4.0",
+    "ink-text-input": "^6.0.0",
+    "open": "^10.1.0",
+    "pathe": "^2.0.3",
+    "react": "^19.0.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.10",
+    "@types/react": "^19.0.0",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}
